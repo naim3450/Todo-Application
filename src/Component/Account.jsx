@@ -14,7 +14,7 @@ const Account = () => {
 
             <div className="flex justify-end space-x-4 mb-6">
                 <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
-                    {isAuthenticated ? user.name : <a href='https://dev-0gij8deadpto4fnr.us.auth0.com/u/signup?state=hKFo2SBxZTBONnRBVlZEX2RYM05kXzhRbmJDcWxkWmhtMTBLa6Fur3VuaXZlcnNhbC1sb2dpbqN0aWTZIExkTmZRZkVuMVhXeWthN1lXN2VYY0ppeUdXVzNENkpTo2NpZNkgMkhQSVJXdVNodEtLTGV5Ym1LWDZSUGlPcDBnWDJSYkM'>Sing Up</a>}
+                    {isAuthenticated ? user.name : <a href='https://dev-0gij8deadpto4fnr.us.auth0.com/u/signup?state=hKFo2SBJUk1RVklqdkFZR3ZnMEQySGFJUUZPQndBNFlJUXNCS6Fur3VuaXZlcnNhbC1sb2dpbqN0aWTZIGpuYS1DM2pyNVp6ZTlhY29GNWdLWVE4aEFtdWlrc1Rto2NpZNkgMkhQSVJXdVNodEtLTGV5Ym1LWDZSUGlPcDBnWDJSYkM'>Sing Up</a>}
                 </button>
                 {
                     isAuthenticated ? <button onClick={() => logout()} className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded">
