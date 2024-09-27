@@ -5,30 +5,48 @@ export const TodoSlice = createSlice({
     name: 'Todo_List',
     initialState: {
         todoList: [],
-        searcArr: [],
-        trueFlase: false
+        filterTodo: [],
+        trueFlase: false,
+        searchTrm: '',
     },
     reducers: {
+
         addTodo: (state, action) => {
             const listObj = {
                 id: nanoid(),
                 list: action.payload
             }
             state.todoList.push(listObj)
+            state.filterTodo.push(listObj)
         },
+
         removeTodo: (state, action) => {
             state.todoList = state.todoList.filter((el) => {
                 return el.id !== action.payload
             })
         }
         ,
-        updateTodo: (state, action) => {
-            state.searcArr = [action.payload]
+
+
+        searchTod: (state, action) => {
+
+            state.searchTrm = action.payload
+
+            const trm = state.searchTrm
+
+            state.todoList = state.filterTodo.filter((el) => {
+                if (trm === "") {
+                    return el
+                }
+                else if (el.list.toLowerCase().includes(trm.toLowerCase())) {
+                    return el
+                }
+            })
         },
 
         editTodo: (state, action) => {
             const { ix, eiteName } = action.payload
-            
+
             state.todoList.forEach(el => {
                 if (el.id == ix) {
                     el.list = eiteName
@@ -39,6 +57,6 @@ export const TodoSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { addTodo, removeTodo, updateTodo, editTodo } = TodoSlice.actions
+export const { addTodo, removeTodo, updateTodo, editTodo, searchTod } = TodoSlice.actions
 
 export default TodoSlice.reducer

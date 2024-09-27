@@ -1,34 +1,19 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { updateTodo } from '../redux/TodoSlice'
+import { searchTod } from '../redux/TodoSlice'
 
 const Search = () => {
 
-    const [searchTrm, setsearchTrm] = useState("")
-
     const dispatch = useDispatch()
 
-    let OrgArry = useSelector((state) => state.TodoArr.todoList)
-
-    const handelChange = (e) => {
-
-        setsearchTrm(e.target.value)
-
-        OrgArry.filter((el) => {
-            if (el.list.toLowerCase().includes(searchTrm.toLowerCase())) {
-                return el
-            }
-        }).map((el) => {
-            return dispatch(updateTodo(el))
-        })
-    }
+    let searchTrm = useSelector((state) => state.TodoArr.searchTrm)
 
     return (
         <div className="mb-6">
             <div className="flex gap-2 relative">
                 <input
                     type="text"
-                    onChange={handelChange}
+                    onChange={(e) => dispatch(searchTod(e.target.value))}
                     value={searchTrm}
                     placeholder="Search todos..."
                     className="w-full px-4 py-2 pl-10 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"

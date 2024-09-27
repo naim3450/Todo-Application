@@ -6,6 +6,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 const AddTodo = () => {
     let [inputVal, setinputVal] = useState("")
+    
     let listArr = useSelector((state) => state.TodoArr.todoList)
 
     const dispatch = useDispatch()
